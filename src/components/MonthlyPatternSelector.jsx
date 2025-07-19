@@ -40,9 +40,10 @@ export default function MonthlyPatternSelector() {
 
   return (
     <div className="space-y-3">
-      <label className="block font-medium">Repeat on:</label>
+      <label htmlFor="position-select" className="block font-medium">Repeat on:</label>
       <div className="flex flex-wrap gap-4 items-center">
         <select
+          id="position-select"
           value={position}
           onChange={(e) => setPosition(e.target.value)}
           className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2"
@@ -54,7 +55,10 @@ export default function MonthlyPatternSelector() {
           ))}
         </select>
 
+        {/* Visually hidden label for accessibility */}
+        <label htmlFor="weekday-select" className="sr-only">Weekday</label>
         <select
+          id="weekday-select"
           value={weekday}
           onChange={(e) => setWeekday(e.target.value)}
           className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2"

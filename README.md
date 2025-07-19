@@ -1,32 +1,111 @@
 # Recurring Date Picker
 
-This is a simple web app I made to help pick recurring dates, like for events that happen every week, month, or year. I made this to learn React and Next.js!
+A modern, responsive web app for generating recurring event dates. Built with Next.js, React, Zustand, Tailwind CSS, and date-fns. Designed for clarity, accessibility, and developer extensibility.
 
-## What it does
-- Lets you pick a start and end date
-- Choose how often something repeats (daily, weekly, monthly, yearly)
-- For weekly, you can pick which days
-- For monthly/yearly, you can pick patterns like "second Monday"
-- Shows a preview of all the dates that match your settings
+---
 
-## How to run it
-1. Make sure you have [Node.js](https://nodejs.org/) installed (I used version 18, but newer should work)
-2. Download or clone this project
-3. Open a terminal in the project folder
-4. Run this to install the stuff it needs:
-   ```
-   npm install
-   ```
-5. Start the app with:
-   ```
-   npm run dev
-   ```
+## Features
+- **Flexible Recurrence:** Supports daily, weekly, monthly, and yearly patterns.
+- **Custom Patterns:** Choose specific weekdays, intervals, and monthly/yearly patterns (e.g., "second Monday").
+- **Date Range:** Select a start and (optional) end date.
+- **Live Preview:** Instantly see all matching dates for your settings.
+- **Responsive UI:** Clean, mobile-friendly, and accessible design.
+- **Accessible:** Properly labeled controls and keyboard navigation.
+- **Tested:** Includes a Vitest/React Testing Library test for core recurrence logic.
 
-## Tech used
-- [Next.js] - (React framework)
-- [Zustand] for state
-- [date-fns] for date stuff
-- Tailwind CSS for styles
+---
+
+## Getting Started
+
+### Installation
+```bash
+# Clone the repository
+https://github.com/Nikhilsingh478/PT_DatePicker
+cd recurring-picker
+
+# Install dependencies
+npm install
+```
+
+### Running the App
+```bash
+npm run dev
+```
+### Running Tests (unit & integration test)
+```bash
+npm test
+# or
+npx vitest
+```
+
+---
+
+## Project Structure
+
+```
+recurring-picker/
+├── src/
+│   ├── app/                # Next.js app directory
+│   │   ├── layout.js       # Global layout, font, and theme setup
+│   │   ├── page.js         # Main app page and UI composition
+│   │   └── globals.css     # Global styles and Tailwind config
+│   ├── components/         # UI components
+│   │   ├── RecurrenceSelector.js
+│   │   ├── DateRangePicker.js
+│   │   ├── CustomRecurrenceOptions.js
+│   │   ├── WeekdaySelector.js
+│   │   ├── MonthlyPatternSelector.jsx
+│   │   ├── CalendarPreview.js
+│   │   └── MonthlyPatternSelector.test.jsx
+│   ├── store/              # Zustand state management
+│   │   └── useRecurrenceStore.js
+│   └── utils/              # Utility functions
+│       └── recurrence.js   # Recurrence calculation logic
+├── public/                 # Static assets
+├── package.json            # Project metadata and scripts
+├── vitest.config.js        # Vitest test config (with @ alias)
+└── ...
+```
+
+---
+
+## Key Components & Logic
+
+### State Management
+- **Zustand** (`src/store/useRecurrenceStore.js`):
+  - Holds all recurrence settings (type, interval, weekdays, custom patterns, date range, preview dates).
+  - Provides setters and toggles for all user actions.
+
+### Recurrence Logic
+- **`getRecurringDates`** (`src/utils/recurrence.js`):
+  - Calculates all dates matching the current recurrence settings.
+  - Handles daily, weekly, monthly (nth weekday), and yearly patterns.
+  - Uses local time for date formatting to avoid timezone bugs.
+
+### Main UI (`src/app/page.js`)
+- **RecurrenceSelector:** Choose between daily, weekly, monthly, yearly.
+- **DateRangePicker:** Select start and end dates.
+- **CustomRecurrenceOptions:** Set interval (e.g., every 2 weeks).
+- **WeekdaySelector:** Pick weekdays (for weekly recurrence).
+- **MonthlyPatternSelector:** Pick nth weekday (for monthly/yearly).
+- **CalendarPreview:** See all generated dates live.
+
+### Testing
+- **Framework:** Vitest + React Testing Library
+- **Test Example:** `src/components/MonthlyPatternSelector.test.jsx`
+  - Renders for monthly/yearly, updates store on change, checks accessibility.
+- **Config:** `vitest.config.js` sets up the `@` alias and jsdom environment.
+
+---
+
+## Scripts
+- `npm run dev` — Start development server
+- `npm run build` — Build for production
+- `npm run start` — Start production server
+- `npm run lint` — Lint code
+- `npm test` — Run tests with Vitest
+
+---
 
 
 
