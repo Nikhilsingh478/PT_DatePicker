@@ -1,6 +1,6 @@
 # Recurring Date Picker
 
-A modern, responsive web app for generating recurring event dates. Built with Next.js, React, Zustand, Tailwind CSS, and date-fns. Designed for clarity, accessibility, and developer extensibility.
+A modern, responsive component for generating recurring event dates. Built with Next.js, React, Zustand, Tailwind CSS, and date-fns. 
 
 ---
 
@@ -91,7 +91,6 @@ recurring-picker/
 - **CalendarPreview:** See all generated dates live.
 
 ### Testing
-- **Framework:** Vitest + React Testing Library
 - **Test Example:** `src/components/MonthlyPatternSelector.test.jsx`
   - Renders for monthly/yearly, updates store on change, checks accessibility.
 - **Config:** `vitest.config.js` sets up the `@` alias and jsdom environment.
